@@ -1,0 +1,47 @@
+h2.calendar_title {
+	background-color: #303030;
+	color: #F0F0F0;
+	margin: 0;
+	padding: 0.25em;
+	text-align: center;
+}
+
+table.calendar {
+	margin-bottom: 1.2em;
+	width: 100%;
+}
+
+	table.calendar th,
+	table.calendar td {
+		border: 1px solid #d3d3d3;
+		vertical-align: top;
+		width: auto;
+	}
+	
+	table.calendar th {
+		background-color: #d3d3d3;
+		text-align: center;
+	}
+	
+	table.calendar td,
+	table.calednar td.dif_month {
+		background-color: #f0f0f0;
+		color: #c0c0c0;
+	}
+
+	table.calendar td.weekendDay {
+		background-color: #e0e0e0;
+	}
+	
+	table.calendar td.today {
+		background-color: #FFFFCC;
+	}
+
+	/* 
+		This style assumes that you are passing the class name 'event' when you call
+		the block on the display_calendar method
+	*/
+	table.calendar td.event {
+		background-color: #fff;
+		color: #333;
+	}

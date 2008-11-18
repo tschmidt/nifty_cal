@@ -20,7 +20,7 @@ module NiftyCal
   # Set Defaults for the calendar
   DEFAULT_OPTIONS = {
     :table_class        => 'calendar',
-    :this_month_class   => 'monthName',
+    :this_month_class   => 'currentMonth',
     :other_month_class  => 'otherMonth',
     :day_name_class     => 'dayName',
     :day_class          => 'weekDay',
@@ -89,9 +89,16 @@ module NiftyCal
             next if weekend?(all_days[num])
           end
           class_names = []
+          
+          # When the block is passed it can be an array with the first entry the content
+          # for the day and the second hash with the key :class. For example:
+          #   ["<p>This is the text</p>", {:class => "event"}]
+          content, attrs = @content.call(all_days[num])
+          class_names.push attrs[:class] if attrs and attrs.has_key?(:class)
           class_names.push Date.today.month == all_days[num].month ? options[:this_month_class] : options[:other_month_class]
           class_names.push weekend?(all_days[num]) ? options[:weekend_day_class] : options[:day_class]
-          cal << %(<td class="#{class_names.join(' ')}"><span>#{format_day(all_days[num])}</span>#{@content.call(all_days[num])}</td>)
+          class_names.push all_days[num] == Date.today ? "today" : ''
+          cal << %(<td class="#{class_names.join(' ')}"><span>#{format_day(all_days[num])}</span>#{content}</td>)
         end
         
         cal << "</tr>"
