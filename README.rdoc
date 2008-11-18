@@ -14,7 +14,12 @@ solution ( mainly because I created it :^d ).
 
 == Installation
 
-+script/plugin install git://github.com/tschmidt/nifty_cal.git+
+To install NiftyCall run this command from your application root:
+
+  script/plugin install git://github.com/tschmidt/nifty_cal.git
+
+If you are using older versions of rails you will need to download and install the
+plugin into the vendor/plugins path of your application.
 
 == Quick and Dirty Instructions
 
