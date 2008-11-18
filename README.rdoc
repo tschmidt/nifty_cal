@@ -23,3 +23,37 @@ plugin into the vendor/plugins path of your application.
 
 == Quick and Dirty Instructions
 
+The first thing that you will need to do is run the NiftyCal generator. This will
+create a stylesheet called "modern.css" in the 'stylesheets/nifty_cal' directory.
+Once you have run this and confirmed that the css file exists you will need to add
+the stylesheet to you application by adding this to the head of your application:
+
+  <%= stylesheet_link_tag 'nifty_cal/modern' %>
+
+At this point you have several options. You can insert a very basic calendar that will
+start at the beginning of the month and continue to the end of the month by inserting
+
+  <%= display_calendar %>
+
+somewhere in your view. You can also specify certain options that will affect the
+look of the calendar. For example, lets say that you only wanted to display the next
+2 weeks. You would add this to your view:
+
+  <%= display_calendar :start_date => Date.today, :end_date => 2.weeks.from_now(Date.today) %>
+
+This will display a calendar starting on today's date and ending 2 weeks from today.
+Now let's get crazy. Let's say that we have an application that stores events. We want
+to display these events on a calendar that will let us know what is coming up. To do this
+the display_calendar() mehtod accepts a block. So lets assume that we have an instance
+variable called @events. Do display them on the calendar we would do something like this:
+
+  <%= display_calendar do |day|
+      if @events.collect(&:date).include?(day)
+        @events.each do |event|
+          "<p>#{event.title}</p>" if event.date == day
+        end
+      end
+    end %>
+    
+That's all there is too it. Play around, get crazy, view the wiki for more information
+or to see all the options you have available to you. Feedback is always welcome.
