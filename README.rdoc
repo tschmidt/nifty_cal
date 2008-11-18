@@ -1,0 +1,19 @@
+= NiftyCal
+
+NiftyCal is a Ruby on Rails plugin that is designed to make viewing a calendar easy
+within your application. The motivation behind this is that I couldn't find a
+calendar solution that suited my needs so I figured, what the hell, I'll just dive in
+and make my own. While creating this I had a few things in mind:
+
+ * There should be an easy way to just display a calendar
+ * The user should be able to accept the default days or specify there own start and end dates.
+ * Every aspect of the calendars css class selectors should be customizable.
+
+With these things in mind I set out to create what I believe is the best calendar
+solution ( mainly because I created it :^d ).
+
+== Installation
+
+
+== Quick and Dirty Instructions
+
