@@ -5,13 +5,7 @@ require 'date'
 # Since I am not satisfied with any other calendaring solutions out there I am going
 # to roll my own. This calendaring solution will take a start date and an end date.
 # Obviously the start date should exist before the end date. You may also pass a block
-# That will take an array of results and present them in an ordered list.
-#
-#== Options
-#  * :start_date - defaults to +Date.today.beginning_of_month+
-#  * :end_date - defaults to +Date.today.end_of_month+
-#  * :include_weekends - defaults to +true+
-#  * :label - defaults to +#{month} #{year}+ (e.g. November 2008)
+# that will populate the column for the day specified.
 module NiftyCal
   
   # Version Number is major.minor.bugfix
@@ -26,12 +20,12 @@ module NiftyCal
     :day_class          => 'weekDay',
     :weekend_day_class  => 'weekendDay',
     :title_class        => 'calendar_title',
+    :title_text         => "#{Date::MONTHNAMES[Date.today.month]} #{Date.today.year}",
+    :include_weekends   => true,
+    :abbrev             => (0..2),
+    :show_today         => true,
     :start_date         => Date.today.beginning_of_month,
     :end_date           => Date.today.end_of_month,
-    :include_weekends   => true,
-    :label              => "#{Date::MONTHNAMES[Date.today.month]} #{Date.today.year}",
-    :abbrev             => (0..2),
-    :show_today         => true
   }
   
   DAY_NAMES = Date::DAYNAMES.dup
@@ -58,7 +52,7 @@ module NiftyCal
   private
   
     def create_calendar(options = {})
-      cal = options[:label].blank? ? "" : "<h2 class=#{options[:title_class]}>#{options[:label]}</h2>"
+      cal = options[:title_text].blank? ? "" : "<h2 class=#{options[:title_class]}>#{options[:title_text]}</h2>"
       cal << %(<table class="#{options[:table_class]}">)
       cal << %(<thead><tr>)
       
