@@ -23,10 +23,14 @@ table.calendar {
 		text-align: center;
 	}
 	
-	table.calendar td,
-	table.calednar td.dif_month {
+	table.calendar td.currentMonth {
 		background-color: #f0f0f0;
 		color: #c0c0c0;
+	}
+	
+	table.calendar td.otherMonth {
+		background-color: #C0C0C0;
+		color: #F0F0F0;
 	}
 
 	table.calendar td.weekendDay {
