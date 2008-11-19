@@ -1,0 +1,29 @@
+== 0.1.4 2008-11-18
+* 1 tiny enhancement
+  * There was an issue where the calendar would not display if the time frame was
+    end of the year to the beginning of the year (December to January for example).
+    This was due to the way that I was calculating the padded days and the total number
+    of days. There will be a better fix for this in the future.
+
+== 0.1.3 2008-11-18
+* 2 tiny enhancements
+  * Modified the labels for the options. This should make them more meaningful when
+    using them with #display_calendar.
+  * Also removed the options comment for now. The information was not accurate.
+
+== 0.1.2 2008-11-18
+* 2 tiny enhancements
+  * Supplied styles for the modern.css file.
+  * Added the ability to pass an array as the result of the #display_calendar block.
+    This will allow the user to pass (for the time being) an options hash with a key
+    of :class and the value being the class that they want applied to the td for the
+    day being modified.
+
+== 0.1.1 2008-11-18
+* 1 tiny enhancement
+  * Fixed a spelling error that was causing the nifty_cal generator to fail.
+
+== 0.1.0 2008-11-18
+* 1 minor enhancement:
+  * Initial release
+  * The version numbers are set up as 'major.minor.tiny'

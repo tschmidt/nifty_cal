@@ -9,7 +9,7 @@ require 'date'
 module NiftyCal
   
   # Version Number is major.minor.bugfix
-  VERSION = '0.1.0'
+  VERSION = '0.1.4'
   
   # Set Defaults for the calendar
   DEFAULT_OPTIONS = {
