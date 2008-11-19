@@ -43,7 +43,14 @@ module NiftyCal
     @first_day = options[:start_date]
     @last_day = options[:end_date]
     pad_last_day unless enough_days? == 0
-    @total_days = @last_day.yday - @first_day.yday
+    @total_days = ''
+    
+    if @first_day.yday > @last_day.yday
+      @total_days = (@last_day.yday + 365) - @first_day.yday
+    else
+      @total_days = @last_day.yday - @first_day.yday
+    end
+    
     @content = block
     
     create_calendar options
@@ -102,7 +109,11 @@ module NiftyCal
     end
     
     def enough_days?
-      (@first_day.yday - @last_day.yday) % 7
+      if @first_day.yday > @last_day.yday
+        (@first_day.yday - (@last_day.yday + 365)) % 7
+      else
+        (@first_day.yday - @last_day.yday) % 7
+      end
     end
     
     def padded_days
